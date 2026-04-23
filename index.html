@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tombol Offer</title>
+
+<style>
+body {
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Tombol utama */
+.offer-btn {
+  position: relative;
+  display: inline-block;
+  padding: 18px 35px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  box-shadow: 0 0 20px rgba(59,130,246,0.7);
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+/* Glow animasi */
+.offer-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: 0.5s;
+}
+
+.offer-btn:hover::before {
+  left: 100%;
+}
+
+.offer-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(6,182,212,0.9);
+}
+
+/* Icon panah */
+.offer-btn span {
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.offer-btn:hover span {
+  margin-left: 18px;
+}
+
+/* Badge kecil (biar keliatan trusted) */
+.badge {
+  position: absolute;
+  bottom: -12px;
+  right: -10px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(34,197,94,0.7);
+}
+</style>
+
+</head>
+<body>
+
+<a href="https://dutchrelay.com/p168054m?key=c8a1dd9c662360dfa6e311cb214c8d3e" class="offer-btn" target="_blank">
+  GO to VID <span>➜</span>
+  <div class="badge">AMAN</div>
+</a>
+
+</body>
+</html>
