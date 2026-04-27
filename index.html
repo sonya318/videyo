@@ -1,89 +1,330 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
+<meta name="clckd" content="e069a22e830f9e6d736ad00ac4b31b3f" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViDeoY ONLINE</title>
 
-<title>videyo</title>
+<!-- 🔥 POPUNDER SCRIPT -->
+<script src="POPUNDER SCRIPT"></script>
 
 <style>
-body {
-  background: #0f172a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: Arial, sans-serif;
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+background:#0f0f0f;
+font-family:Arial;
+color:#ffffff;
 }
 
-/* Tombol utama */
-.offer-btn {
-  position: relative;
-  display: inline-block;
-  padding: 18px 35px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-  box-shadow: 0 0 20px rgba(59,130,246,0.7);
-  transition: 0.3s ease;
-  overflow: hidden;
+.header{
+height:60px;
+display:flex;
+align-items:center;
+padding:0 20px;
+border-bottom:1px solid #222;
+font-weight:bold;
+color:#d405f0;
 }
 
-/* Glow animasi */
-.offer-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-  transition: 0.5s;
+.layout{
+max-width:1000px;
+margin:auto;
+padding:20px;
 }
 
-.offer-btn:hover::before {
-  left: 100%;
+.player video{
+width:100%;
+border-radius:12px;
+background:#000;
 }
 
-.offer-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(6,182,212,0.9);
+/* CHANNEL */
+.main-channel{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:12px;
+padding:12px;
+background:#111;
+border-radius:12px;
+flex-wrap:wrap;
+gap:10px;
 }
 
-/* Icon panah */
-.offer-btn span {
-  margin-left: 10px;
-  transition: 0.3s;
+.channel-left{
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-.offer-btn:hover span {
-  margin-left: 18px;
+.channel-left img{
+width:45px;
+height:45px;
+border-radius:50%;
 }
 
-/* Badge kecil (biar keliatan trusted) */
-.badge {
-  position: absolute;
-  bottom: -12px;
-  right: -10px;
-  background: #22c55e;
-  color: #fff;
-  font-size: 10px;
-  padding: 5px 10px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(34,197,94,0.7);
+.channel-info{
+display:flex;
+flex-direction:column;
+}
+
+.channel-name{
+font-weight:bold;
+font-size:15px;
+}
+
+.channel-actions{
+display:flex;
+gap:10px;
+}
+
+.btn-follow{
+background:#00f7ff;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+color:#ee0b0b;
+font-weight:bold;
+cursor:pointer;
+}
+
+.btn-join{
+background:transparent;
+border:1px solid #ffffff;
+padding:8px 14px;
+border-radius:6px;
+color:#ff9900;
+cursor:pointer;
+}
+
+/* RECOMMEND */
+.recommend{
+margin-top:20px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.item{
+position:relative;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+background:#111;
+}
+
+.thumb{
+width:100%;
+aspect-ratio:16/9;
+object-fit:cover;
+}
+
+/* PLAY ICON */
+.play-icon{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:50px;
+height:50px;
+background:rgba(0,0,0,0.6);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+color:#fff;
+transition:0.3s;
+}
+
+.item:hover .play-icon{
+background:#e50914;
+transform:translate(-50%,-50%) scale(1.1);
+}
+
+.channel{
+padding:6px;
+font-size:12px;
+color:#aaa;
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+.channel img{
+width:20px;
+height:20px;
+border-radius:50%;
+}
+
+.view-more{
+margin-top:25px;
+text-align:center;
+cursor:pointer;
+color:#aaa;
+}
+
+@media(max-width:700px){
+.recommend{grid-template-columns:repeat(2,1fr);}
 }
 </style>
-
 </head>
+
 <body>
 
-<a href="https://dutchrelay.com/p168054m?key=c8a1dd9c662360dfa6e311cb214c8d3e" class="offer-btn" target="_blank">
-  GO to VID <span>➜</span>
-  <div class="badge">AMAN</div>
+<div class="header">ViDeoY ONLINE</div>
+
+<div class="layout">
+
+<div class="player">
+<video id="video" controls preload="metadata"></video>
+</div>
+
+<div class="main-channel" id="mainChannel"></div>
+<div class="recommend" id="list"></div>
+
+<div class="view-more" onclick="goMore()">VIEW MORE</div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(location.search);
+let id = params.get("id") || "2RUb0Ci91";
+
+const video = document.getElementById("video");
+const mainChannel = document.getElementById("mainChannel");
+const list = document.getElementById("list");
+
+const videos = [
+{id:"2RUb0Ci91",thumb:"https://cdn.aceimg.com/f129a271f.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"4JvPvFsj1",thumb:"https://cdn.aceimg.com/39bd56b70.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"6QVMOXCv1",thumb:"https://cdn.aceimg.com/452340590.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"7DdL8STp1",thumb:"https://cdn.aceimg.com/9ca056741.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"8KQyvCLb1",thumb:"https://cdn.aceimg.com/8e83d47d0.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"8vVCD4WA1",thumb:"https://cdn.aceimg.com/2f05bde93.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"AWMj4DfH1",thumb:"https://cdn.aceimg.com/8a30bf57c.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"aXFcQ36W1",thumb:"https://cdn.aceimg.com/a6ccbb12a.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"C2IdO9Kj1",thumb:"https://cdn.aceimg.com/3161e5a3b.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"HyOg4NnI1",thumb:"https://cdn.aceimg.com/e76e56253.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"i1yOlplj1",thumb:"https://cdn.aceimg.com/23f33a2b1.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"iRSgtDsh1",thumb:"https://cdn.aceimg.com/a62caa432.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"itql7h271",thumb:"https://cdn.aceimg.com/88c3e5971.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"iUPq9GTj1",thumb:"https://cdn.aceimg.com/16a2f37eb.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"JFlWnw6Z1",thumb:"https://cdn.aceimg.com/312824e59.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"K8W6e80T1",thumb:"https://cdn.aceimg.com/568faa414.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"l6vfpKVt1",thumb:"https://cdn.aceimg.com/72729dca6.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"MsxOKhFm1",thumb:"https://cdn.aceimg.com/d27576a45.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"nFZL3N1s1",thumb:"https://cdn.aceimg.com/0c2e2f0fd.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"nQnwB7XW1",thumb:"https://cdn.aceimg.com/3a8e21716.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"NtJtm5sn1",thumb:"https://cdn.aceimg.com/0827a57f1.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"OTsDDKCs1",thumb:"https://cdn.aceimg.com/597cea769.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"rbWOld2y1",thumb:"https://cdn.aceimg.com/9b7e0a004.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"rKbiNDn51",thumb:"https://cdn.aceimg.com/ae9d3595f.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"sJzbXWEW1",thumb:"https://cdn.aceimg.com/1cec26fe0.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"sZpHGjrU1",thumb:"https://cdn.aceimg.com/937f9dfc9.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"T3eiJGy31",thumb:"https://cdn.aceimg.com/9600493ba.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"U0uTtqAt1",thumb:"https://cdn.aceimg.com/5fdc9207b.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"vE0bHZgZ1",thumb:"https://cdn.aceimg.com/6bd422c01.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"YzQbwik81",thumb:"https://cdn.aceimg.com/ef2a63541.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"ZX8qsE4K1",thumb:"https://cdn.aceimg.com/44d43a773.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"ZXiiY9Yl1",thumb:"https://cdn.aceimg.com/0d09413d7.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"},
+{id:"ZzQhvhSI1",thumb:"https://cdn.aceimg.com/51554d068.jpg", author:"Scarlet Society", avatar:"https://cdn.aceimg.com/7365eaf2d.jpg"}
+];
+
+const currentVideo = videos.find(v=>v.id===id);
+video.src = "https://cdn2.videy.co/" + id + ".mp4";
+
+/* 🔥 FACEBOOK */
+function goFacebook(){
+  window.open("https://www.facebook.com/groups/1291137992981466", "_blank");
+}
+
+/* CHANNEL */
+if(currentVideo){
+  mainChannel.innerHTML = `
+    <div class="channel-left">
+      <img src="${currentVideo.avatar}">
+      <div class="channel-info">
+        <div class="channel-name">${currentVideo.author}</div>
+      </div>
+    </div>
+
+    <div class="channel-actions">
+      <button class="btn-follow" onclick="goFacebook()">Follow</button>
+      <button class="btn-join" onclick="goFacebook()">Join</button>
+    </div>
+  `;
+}
+
+/* RENDER */
+let visible = 6;
+
+function render(){
+  list.innerHTML="";
+  videos.slice(0,visible).forEach(v=>{
+    const div=document.createElement("div");
+    div.className="item";
+    div.innerHTML=`
+      <img src="${v.thumb}" class="thumb">
+      <div class="play-icon">▶</div>
+      <div class="channel">
+        <img src="${v.avatar}">
+        ${v.author}
+      </div>
+    `;
+    div.onclick=()=>location.search="?id="+v.id;
+    list.appendChild(div);
+  });
+}
+
+render();
+
+function goMore(){
+  visible+=6;
+  render();
+}
+
+/* 🔥 REDIRECT IKLAN (1x saja) */
+let triggered = false;
+
+function goAds(){
+  if(!triggered){
+    triggered = true;
+    window.open("REDIRECT IKLAN", "_blank");
+  }
+}
+
+video.addEventListener("play", goAds);
+video.addEventListener("click", goAds);
+
+</script>
+
+<!-- 🔥 HISTATS TRACKING -->
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">
+var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4977309,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+
+(function() {
+var hs = document.createElement('script'); 
+hs.type = 'text/javascript'; 
+hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();
+</script>
+
+<noscript>
+<a href="/" target="_blank">
+<img src="//sstatic1.histats.com/0.gif?4977309&101" alt="" border="0">
 </a>
+</noscript>
+<!-- Histats.com  END  -->
 
 </body>
 </html>
