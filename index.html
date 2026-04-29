@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ViDeoY ONLINE</title>
 
-<!-- 🔥 POPUNDER SCRIPT -->
 <script src="POPUNDER SCRIPT"></script>
 
 <style>
@@ -40,7 +39,6 @@ border-radius:12px;
 background:#000;
 }
 
-/* CHANNEL */
 .main-channel{
 display:flex;
 justify-content:space-between;
@@ -99,7 +97,6 @@ color:#ff9900;
 cursor:pointer;
 }
 
-/* RECOMMEND */
 .recommend{
 margin-top:20px;
 display:grid;
@@ -121,7 +118,6 @@ aspect-ratio:16/9;
 object-fit:cover;
 }
 
-/* PLAY ICON */
 .play-icon{
 position:absolute;
 top:50%;
@@ -237,7 +233,17 @@ const videos = [
 const currentVideo = videos.find(v=>v.id===id);
 video.src = "https://cdn2.videy.co/" + id + ".mp4";
 
-/* 🔥 FACEBOOK */
+/* SHUFFLE FIX (Fisher-Yates) */
+function shuffleArray(arr){
+  let a = [...arr];
+  for(let i=a.length-1;i>0;i--){
+    let j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+/* FACEBOOK */
 function goFacebook(){
   window.open("https://www.facebook.com/groups/1291137992981466", "_blank");
 }
@@ -259,12 +265,14 @@ if(currentVideo){
   `;
 }
 
-/* RENDER */
+/* RANDOM LIST (STABLE PER LOAD) */
 let visible = 6;
+let shuffledVideos = shuffleArray(videos);
 
 function render(){
   list.innerHTML="";
-  videos.slice(0,visible).forEach(v=>{
+
+  shuffledVideos.slice(0,visible).forEach(v=>{
     const div=document.createElement("div");
     div.className="item";
     div.innerHTML=`
@@ -287,7 +295,7 @@ function goMore(){
   render();
 }
 
-/* 🔥 REDIRECT IKLAN (1x saja) */
+/* ADS */
 let triggered = false;
 
 function goAds(){
@@ -301,7 +309,7 @@ video.addEventListener("play", goAds);
 video.addEventListener("click", goAds);
 
 </script>
-
+  
 <!-- 🔥 HISTATS TRACKING -->
 <!-- Histats.com  START  (aync)-->
 <script type="text/javascript">
