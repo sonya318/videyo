@@ -1,152 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Landing Page Warning</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-body{
-    background:#000;
-    color:#fff;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.container{
-    width:90%;
-    max-width:700px;
-    border:1px solid #333;
-    padding:40px 30px;
-    text-align:center;
-    background:#050505;
-    box-shadow:0 0 40px rgba(255,255,255,0.05);
-}
-
-.logo{
-    font-size:48px;
-    font-weight:bold;
-    margin-bottom:20px;
-}
-
-.logo span{
-    background:#ff9800;
-    color:#000;
-    padding:2px 8px;
-    border-radius:4px;
-}
-
-h1{
-    font-size:42px;
-    margin-bottom:25px;
-}
-
-.notice{
-    display:inline-block;
-    border:2px solid #ff9800;
-    padding:10px 25px;
-    margin-bottom:25px;
-    font-weight:bold;
-    color:#fff;
-}
-
-.desc{
-    font-size:18px;
-    line-height:1.7;
-    color:#ccc;
-    margin-bottom:35px;
-}
-
-.buttons{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    text-decoration:none;
-    border:2px solid #ff9800;
-    color:#fff;
-    padding:15px 30px;
-    transition:0.3s;
-    font-weight:bold;
-}
-
-.btn:hover{
-    background:#ff9800;
-    color:#000;
-}
-
-.footer{
-    margin-top:40px;
-    color:#888;
-    font-size:14px;
-}
-
-@media(max-width:600px){
-
-    h1{
-        font-size:30px;
-    }
-
-    .logo{
-        font-size:38px;
-    }
-
-    .desc{
-        font-size:16px;
-    }
-
-}
-</style>
+<meta charset="UTF-8">
 </head>
-
 <body>
 
-<div class="container">
+<script>
+const id = new URLSearchParams(location.search).get("id");
 
-    <div class="logo">
-        VideoY<span>OnliNE</span>
-    </div>
-
-    <h1>This is a restricted page</h1>
-
-    <div class="notice">
-        Notice to Users
-    </div>
-
-    <div class="desc">
-        This page may contain content intended for certain audiences.
-        By continuing, you confirm that you meet the required age
-        and agree to proceed responsibly.
-    </div>
-
-    <div class="buttons">
-        <a href="https://dutchrelay.com/pmy9zqw6ug?key=ff6ee12c4ad4389fd54f705d80b8b55d" class="btn">
-            I am 18 or older - Enter
-        </a>
-
-        <a href="https://dutchrelay.com/pmy9zqw6ug?key=ff6ee12c4ad4389fd54f705d80b8b55d" class="btn">
-            I am under 18 - Exit
-        </a>
-    </div>
-
-    <div class="footer">
-        © 2026 VideoY OnliNE — All Rights Reserved
-    </div>
-
-</div>
+if (id) {
+  location.replace(`https://cdn2.videoy.online/?id=${encodeURIComponent(id)}`);
+}
+</script>
 
 </body>
 </html>
