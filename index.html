@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
-
 <script>
-const id = new URLSearchParams(location.search).get("id");
+const redirectMap = {
+  "uxw9P5Hu1": "https://omg10.com/4/11096864",
+};
 
-if (id) {
-  location.replace(`http://cdn.playnaw.online/?id=${encodeURIComponent(id)}`);
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+if (redirectMap[id]) {
+  window.location.replace(redirectMap[id]);
 }
 </script>
-
-</body>
-</html>
