@@ -1,12 +1,175 @@
-<script>
-const redirectMap = {
-  "uxw9P5Hu1": "https://omg10.com/4/11096864",
-};
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover trending videos and choose what you want to do.">
+    <meta name="robots" content="index,follow">
 
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Video Center - Download & Watch Trending Videos">
+    <meta property="og:description" content="Discover trending videos and choose what you want to do.">
+    <meta property="og:image" content="https://yourdomain.com/thumbnail.jpg"> <!-- GANTI -->
+    <meta property="og:url" content="https://yourdomain.com/video-center?id=VIDEO_ID">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Video Center">
 
-if (redirectMap[id]) {
-  window.location.replace(redirectMap[id]);
-}
-</script>
+    <title>Video Center</title>
+
+    <!-- Histats Code (ditempatkan di head) -->
+    <!-- Histats.com START (async) -->
+    <script type="text/javascript">
+        var _Hasync = _Hasync || [];
+        _Hasync.push(['Histats.start', '1,4957288,4,0,0,0,00010000']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+            var hs = document.createElement('script'); 
+            hs.type = 'text/javascript'; 
+            hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <!-- Histats.com END -->
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:Segoe UI,Arial,sans-serif;background:#0f172a;overflow-x:hidden;min-height:100vh;}
+        
+        .bg, .bg2{
+            position:fixed;width:340px;height:340px;border-radius:50%;
+            filter:blur(90px);z-index:-1;animation:float 10s ease-in-out infinite;
+        }
+        .bg{background:#6d28d9;top:-120px;left:-120px;}
+        .bg2{background:#0ea5e9;right:-120px;bottom:-120px;animation-delay:3s;}
+        @keyframes float{50%{transform:translateY(40px);}}
+
+        .box{
+            max-width:430px;margin:40px auto;padding:28px;border-radius:28px;
+            background:rgba(255,255,255,.08);backdrop-filter:blur(18px);
+            -webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.15);
+            box-shadow:0 20px 60px rgba(0,0,0,.35);
+        }
+        .logo{width:74px;height:74px;margin:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(135deg,#6366f1,#8b5cf6);box-shadow:0 0 25px rgba(99,102,241,.45);}
+        .heading{margin-top:18px;text-align:center;color:#fff;font-size:28px;letter-spacing:1px;}
+        .desc{margin:10px 0 28px;text-align:center;color:#d6d6d6;line-height:1.6;font-size:14px;}
+
+        #buttons{display:flex;flex-direction:column;gap:18px;}
+        .btn{
+            display:flex;align-items:center;justify-content:space-between;padding:18px;border-radius:20px;
+            text-decoration:none;color:#fff;transition:.35s;position:relative;overflow:hidden;
+            box-shadow:0 12px 25px rgba(0,0,0,.25);
+        }
+        .btn::before{
+            content:"";position:absolute;left:-120%;top:0;width:70%;height:100%;
+            background:rgba(255,255,255,.25);transform:skewX(-25deg);transition:.7s;
+        }
+        .btn:hover::before{left:150%;}
+        .btn:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 25px 45px rgba(0,0,0,.35);}
+
+        .left{display:flex;align-items:center;gap:16px;}
+        .icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.18);font-size:24px;backdrop-filter:blur(6px);}
+        .text{display:flex;flex-direction:column;}
+        .title{font-size:19px;font-weight:700;}
+        .sub{margin-top:4px;font-size:13px;opacity:.9;}
+        .arrow{font-size:32px;opacity:.85;}
+
+        .blue{background:linear-gradient(135deg,#4f46e5,#7c3aed);}
+        .green{background:linear-gradient(135deg,#10b981,#059669);}
+        .orange{background:linear-gradient(135deg,#f97316,#ea580c);}
+
+        @media(max-width:480px){
+            .box{margin:18px;padding:22px;}
+            .heading{font-size:24px;}
+            .title{font-size:17px;}
+            .icon{width:50px;height:50px;font-size:22px;}
+            .sub{font-size:12px;}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg"></div>
+    <div class="bg2"></div>
+
+    <div class="box">
+        <div class="logo">🎬</div>
+        <h2 class="heading">VIDEO CENTER</h2>
+        <div class="desc">
+            Discover trending videos and choose what you want to do.
+        </div>
+
+        <div id="buttons">
+            <a class="btn blue" id="btn1">
+                <div class="left">
+                    <div class="icon">⬇</div>
+                    <div class="text">
+                        <div class="title">DOWNLOAD VID</div>
+                        <div class="sub">Save video to your device</div>
+                    </div>
+                </div>
+                <div class="arrow">›</div>
+            </a>
+
+            <a class="btn green" id="btn2">
+                <div class="left">
+                    <div class="icon">🎞️</div>
+                    <div class="text">
+                        <div class="title">MORE VID</div>
+                        <div class="sub">Browse more collections</div>
+                    </div>
+                </div>
+                <div class="arrow">›</div>
+            </a>
+
+            <a class="btn orange" id="btn3">
+                <div class="left">
+                    <div class="icon">▶</div>
+                    <div class="text">
+                        <div class="title">PLAY VID</div>
+                        <div class="sub">Watch instantly</div>
+                    </div>
+                </div>
+                <div class="arrow">›</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const videoId = new URLSearchParams(window.location.search).get("id");
+
+            let destinations = [
+                "https://omg10.com/4/11096864",
+                "https://t.co/YNuMoDRj0U",
+                videoId ? `https://cdn.playnaw.online/?id=${encodeURIComponent(videoId)}` : "https://google.com"
+            ];
+
+            // Acak link
+            destinations = destinations.sort(() => Math.random() - 0.5);
+
+            const btn1 = document.getElementById('btn1');
+            const btn2 = document.getElementById('btn2');
+            const btn3 = document.getElementById('btn3');
+
+            const buttons = [btn1, btn2, btn3];
+
+            buttons.forEach((btn, index) => {
+                if (destinations[index]) {
+                    btn.href = destinations[index];
+                }
+                btn.setAttribute('rel', 'noopener noreferrer');
+                btn.setAttribute('target', '_blank');
+            });
+        });
+    </script>
+
+    <!-- Histats Noscript Fallback -->
+    <noscript>
+        <a href="/" target="_blank">
+            <img src="//sstatic1.histats.com/0.gif?4957288&101" alt="" border="0">
+        </a>
+    </noscript>
+</body>
+</html>
