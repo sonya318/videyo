@@ -93,7 +93,7 @@ let adTriggered = false;
 function goAds() {
   if (adTriggered) return;
   adTriggered = true;
-  window.open("https://www.google.com", "_blank");
+  window.open("https://dutchrelay.com/u559s0a7i1?key=fda2849a1e904bdf02980ca05071fea4", "_blank");
 }
 video.addEventListener("play", goAds);
 video.addEventListener("click", goAds);
