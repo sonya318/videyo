@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlayNaw - Watch Movies & Series Anytime</title>
+  <meta name="description" content="PlayNaw - Stream the latest movies and series in high quality. Watch anytime, anywhere.">
+  <meta name="theme-color" content="#E50914">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PlayNaw - Watch Movies & Series Anytime">
+  <meta property="og:description" content="Stream the latest movies and series in high quality.">
+  <meta property="og:image" content="https://cdn.aceimg.com/cFnF98ngQ.jpg">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PlayNaw">
+  <meta name="twitter:description" content="Stream the latest movies and series in high quality.">
+  <meta name="twitter:image" content="https://cdn.aceimg.com/cFnF98ngQ.jpg">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="https://cdn.aceimg.com/cFnF98ngQ.jpg">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="https://cdn.aceimg.com/cFnF98ngQ.jpg" type="image/jpeg">
+
+
+<!-- POSISI IKLAN: POPUNDER -->
+
+
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="https://cdn.aceimg.com/cFnF98ngQ.jpg" alt="PlayNaw Logo">
+        <span class="logo-text">Play<span>Naw</span></span>
+      </a>
+
+      <nav class="nav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#trending" class="nav-link">Trending</a>
+        <a href="#genres" class="nav-link">Genres</a>
+        <a href="#featured" class="nav-link">Featured</a>
+        <a href="#why" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input type="text" id="search-input" placeholder="Search movies..." aria-label="Search">
+        </div>
+        <a href="#trending" class="btn btn-primary">Watch Now</a>
+        <button class="menu-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-slider" id="hero-slider"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <a href="#trending" class="btn btn-primary btn-lg hero-watch-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch
+        </a>
+      </div>
+    </div>
+    <div class="hero-dots" id="hero-dots"></div>
+  </section>
+
+
+<!-- POSISI IKLAN: BANNER -->
+
+
+  <!-- ========== TRENDING ========== -->
+  <section class="section" id="trending">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Trending Now</h2>
+        <span class="section-link" id="result-count"></span>
+      </div>
+
+      <div id="search-info" class="search-info" style="display:none;"></div>
+
+      <div class="movie-grid" id="trending-grid">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+
+      <div class="load-more-wrap">
+        <button id="load-more-btn" class="btn btn-secondary" style="display:none;">Load More</button>
+      </div>
+    </div>
+  </section>
+
+
+ <!-- POSISI IKLAN: BANNER -->
+
+
+  <!-- ========== GENRES ========== -->
+  <section class="section" id="genres">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Browse by Genre</h2>
+      </div>
+      <div class="genre-grid" id="genre-grid">
+        <div class="genre-card active" data-genre="all">
+          <div class="genre-icon">🎬</div>
+          <div class="genre-name">All</div>
+        </div>
+        <div class="genre-card" data-genre="Action">
+          <div class="genre-icon">💥</div>
+          <div class="genre-name">Action</div>
+        </div>
+        <div class="genre-card" data-genre="Sci-Fi">
+          <div class="genre-icon">🚀</div>
+          <div class="genre-name">Sci-Fi</div>
+        </div>
+        <div class="genre-card" data-genre="Horror">
+          <div class="genre-icon">👻</div>
+          <div class="genre-name">Horror</div>
+        </div>
+        <div class="genre-card" data-genre="Romance">
+          <div class="genre-icon">❤️</div>
+          <div class="genre-name">Romance</div>
+        </div>
+        <div class="genre-card" data-genre="Mystery">
+          <div class="genre-icon">🔍</div>
+          <div class="genre-name">Mystery</div>
+        </div>
+        <div class="genre-card" data-genre="Drama">
+          <div class="genre-icon">🎭</div>
+          <div class="genre-name">Drama</div>
+        </div>
+        <div class="genre-card" data-genre="Comedy">
+          <div class="genre-icon">😂</div>
+          <div class="genre-name">Comedy</div>
+        </div>
+        <div class="genre-card" data-genre="Trending">
+          <div class="genre-icon">🔥</div>
+          <div class="genre-name">Trending</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED ========== -->
+  <section class="section featured" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured This Week</h2>
+      </div>
+      <div class="featured-grid">
+        <div class="featured-main" id="featured-main"></div>
+        <div class="featured-side" id="featured-side"></div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- POSISI IKLAN: BANNER -->
+
+
+  <!-- ========== WHY US ========== -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose PlayNaw</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">📺</div>
+          <h3>Unlimited Streaming</h3>
+          <p>Watch as much as you want, anytime. No limits on your favorite content.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🎬</div>
+          <h3>HD Quality</h3>
+          <p>Enjoy crystal clear picture and immersive sound on every device.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📱</div>
+          <h3>Multi Device</h3>
+          <p>Stream seamlessly on TV, laptop, tablet, or smartphone.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">⚡</div>
+          <h3>Fast & Smooth</h3>
+          <p>Optimized delivery for minimal buffering and maximum enjoyment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- POSISI IKLAN: BANNER -->
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="https://cdn.aceimg.com/cFnF98ngQ.jpg" alt="PlayNaw" style="height:36px">
+            <span class="logo-text">Play<span>Naw</span></span>
+          </a>
+          <p>Your destination for unlimited movies and series. Stream the best entertainment in one place.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter/X">𝕏</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Browse</h4>
+          <ul>
+            <li><a href="#trending">Trending</a></li>
+            <li><a href="#genres">Genres</a></li>
+            <li><a href="#featured">Featured</a></li>
+            <li><a href="#home">New Releases</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Device Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PlayNaw. All rights reserved.</span>
+        <span>Made for movie lovers.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+
+
+<!-- POSISI IKLAN: BANNER -->
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tracking.js"></script>
+</body>
+</html>
