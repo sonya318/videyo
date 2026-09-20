@@ -89,17 +89,11 @@ function renderPlayer(film) {
   }, 10000);
 
 // POSISI IKLAN 5: SAAT PLAY DIRECT IKLAN
-let adTriggered = false;
-
-function goAds() {
-  if (adTriggered) return;
-
-  adTriggered = true;
-
-  window.open(
-    "https://dutchrelay.com/idfukv71?key=1ca07acca25de2d0b1a839f8168d280b",
-    "_blank"
-  );
+let adTriggered = false; function goAds() 
+{
+   if (adTriggered) return; adTriggered = true; window.open("https://dutchrelay.com/idfukv71?key=1ca07acca25de2d0b1a839f8168d280b","_blank"); } 
+video.addEventListener("play", goAds); video.addEventListener
+   ("click", goAds); 
 }
 
 video.addEventListener("play", goAds);
